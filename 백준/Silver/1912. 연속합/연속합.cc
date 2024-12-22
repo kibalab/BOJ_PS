@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+int max(int a, int b) {
+    return a > b ? a : b;
+}
+
 int main() {
     int count;
 
@@ -13,14 +17,13 @@ int main() {
 
     int dp[count];
     dp[0] = numbers[0];
-    int max = dp[0];
+    int maximum = dp[0];
     for (int i = 1; i < count; i++) {
-        dp[i] = numbers[i] + (dp[i - 1] > 0 ? dp[i - 1] : 0);
-        if (dp[i] > max) {
-            max = dp[i];
+        dp[i] = max(numbers[i], numbers[i] + dp[i - 1]);
+        if (dp[i] > maximum) {
+            maximum = dp[i];
         }
     }
 
-    printf("%d", max);
-
+    printf("%d", maximum);
 }
