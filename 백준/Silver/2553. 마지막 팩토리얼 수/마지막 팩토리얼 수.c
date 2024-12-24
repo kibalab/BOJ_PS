@@ -1,1 +1,1 @@
-main(n,i){long long f=1;scanf("%d",&n);for(i=1;i<=n;i++){f*=i;f%=10000000;while(f%10==0)f/=10;}putchar(48+f%10);}
+main(n){long long f=1;scanf("%d",&n);while(n--)for(f*=n+1,f%=10000000;!(f%10);f/=10);putchar('0'+f%10);}
